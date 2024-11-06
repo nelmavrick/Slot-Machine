@@ -6,9 +6,10 @@
 //6. Give the user their winnings
 //7. Play again
 
+//Require Our Module Top
 const prompt = require("prompt-sync")();
 
-
+//Define Variables
 const ROWS = 3;
 const COLS = 3;
 
@@ -27,7 +28,7 @@ const SYMBOL_VALUES ={
 }
 
 
-
+//Define Deposit Money Function
 const deposit = () => {
   while (true) {
     const depositAmount = prompt("Enter amount: ")
@@ -42,8 +43,8 @@ const deposit = () => {
   }
 
   };
-  //deposit();
 
+  // Function For Number of Slots to Bet
   const getNumberOfLines = () => {
     while (true) {
       const lines =prompt("Enter number of lines to bet on(1-3): ");
@@ -58,6 +59,7 @@ const deposit = () => {
 
   }
 
+  //Get Bet Function
   const getBet = (balance, lines) => {
     while (true) {
       const bet = prompt("Enter the bet per line: ");
@@ -71,6 +73,7 @@ const deposit = () => {
     }
   };
 
+  //Spin The Reels Function
 const spin = () => {
   const symbols = [];
   for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
@@ -80,6 +83,7 @@ const spin = () => {
      
   }
 
+  //Reel Function
   const reels = [];
   for (let i = 0; i < COLS; i++){
     reels.push([])
@@ -97,6 +101,7 @@ const spin = () => {
   
 };
 
+//Transpose Function
 const transpose = (reels) => {
   const rows = [];
 
@@ -109,6 +114,7 @@ const transpose = (reels) => {
   return rows;
 }
 
+//Print Rows Function
 const printRows = (rows) => {
   for (const row of rows) {
     let rowString = "";
@@ -123,6 +129,7 @@ const printRows = (rows) => {
   }
 }
 
+//Gather Winnings Function
 const getWinnings = (rows, bet, lines) => {
   let winnings = 0;
 
@@ -146,7 +153,7 @@ const getWinnings = (rows, bet, lines) => {
   
 };
 
-
+//Game logic Function
 const game = () => {
   let balance = deposit();
 
